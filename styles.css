@@ -21,17 +21,17 @@ header {
 }
 
 .inputfiltro {
-    width: 40%;
+    width: 30%;
     padding-left: 10px;
 }
 
-.botaobusca {
+.botoesFiltro {
     margin-left: 10px;
     border-radius: 3px;
     padding: 4px;
 }
 
-.botaobusca:hover {
+.botoesFiltro:hover {
     cursor: pointer;
 }
 
@@ -58,6 +58,7 @@ a {
 
 a:hover {
     text-decoration: underline;
+    color: red;
 }
 
 .colunaNome {

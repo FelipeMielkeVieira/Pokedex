@@ -1,4 +1,5 @@
 let tela = document.querySelector('body');
+let head = document.querySelector('head');
 
 let lista = [];
 
@@ -8,8 +9,9 @@ let nomePokemon = document.createElement('p');
 
 let inputfiltro;
 let botaoBusca;
+
 botaoBusca = document.createElement('button');
-botaoBusca.className = 'botaobusca';
+botaoBusca.className = 'botoesFiltro';
 botaoBusca.innerText = 'Buscar';
 botaoBusca.onclick = filtrar;
 
@@ -24,8 +26,10 @@ function pegarListaPokemon() {
                     lista.push(a);
                 });
 
+                criarCabecalho();
+                criarFiltro();
                 criarTabela(lista);
-
+                tituloPagina();
             });
         }).catch(function(erro) {
             console.log('erro:', erro);
@@ -52,7 +56,7 @@ function criarFiltro() {
     inputfiltro.className = 'inputfiltro';
     inputfiltro.placeholder = 'Buscar';
 
-    colocarFiltro(divFiltro, botaoBusca);
+    colocarFiltro(divFiltro);
 }
 
 function colocarFiltro(a) {
@@ -120,6 +124,13 @@ function filtrar() {
     criarTabela(listaFiltrada);
 }
 
+function tituloPagina() {
+
+    let titulo = document.createElement('title');
+
+    titulo.innerText = 'Pokedéx';
+
+    head.appendChild(titulo);
+}
+
 pegarListaPokemon();
-criarCabecalho();
-criarFiltro();
