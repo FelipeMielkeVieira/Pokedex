@@ -39,6 +39,8 @@ function criarPagina(a) {
     criarDivNomeImagem(a)
     tabelaStatus(a);
     tituloPagina(a);
+    criarDivBaixo(a);
+    voltarPgInicial();
 }
 
 function criarDivNomeImagem(a) {
@@ -188,6 +190,73 @@ function tituloPagina(a) {
     titulo.innerText = a.name;
 
     head.appendChild(titulo);
+}
+
+function criarDivBaixo(a) {
+
+    let divBaixo = document.createElement('div');
+    divBaixo.className = 'divBaixo';
+
+    if (a.id != '001') {
+
+        let botaoVoltar = document.createElement('button');
+        botaoVoltar.className = 'botoesFooter';
+
+        let voltar = document.createElement('a');
+        voltar.innerText = 'Pokémon Anterior';
+        voltar.className = 'asFooter';
+
+        let idVoltar = parseInt(a.id) - 1;
+        let idVoltar2 = idVoltar + '';
+
+        if (idVoltar2.length == 1) {
+            idVoltar2 = '00' + idVoltar2;
+        } else if (idVoltar2.length == 2) {
+            idVoltar2 = '0' + idVoltar2;
+        }
+
+        voltar.href = './index.html?' + idVoltar2;
+
+        divBaixo.appendChild(botaoVoltar);
+        botaoVoltar.appendChild(voltar);
+    }
+
+    if (a.id != '10060') {
+
+        let botaoProximo = document.createElement('button');
+        botaoProximo.className = 'botoesFooter';
+
+        let proximo = document.createElement('a');
+        proximo.innerText = 'Próximo Pokémon';
+        proximo.className = 'asFooter';
+
+        let idProximo = parseInt(a.id) + 1;
+        let idProximo2 = idProximo + '';
+
+        if (idProximo2.length == 1) {
+            idProximo2 = '00' + idProximo2;
+        } else if (idProximo2.length == 2) {
+            idProximo2 = '0' + idProximo2;
+        }
+
+        proximo.href = './index.html?' + idProximo2;
+
+        botaoProximo.appendChild(proximo);
+        divBaixo.appendChild(botaoProximo);
+    }
+
+    tela.appendChild(divBaixo);
+}
+
+function voltarPgInicial() {
+
+    let botaoPgInicial = document.createElement('a');
+    botaoPgInicial.className = 'pgInicial';
+
+    botaoPgInicial.innerText = 'Página Inicial';
+    botaoPgInicial.href = '../index.html';
+
+    tela.appendChild(botaoPgInicial);
 }
 
 criarCabecalho();
