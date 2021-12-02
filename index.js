@@ -84,9 +84,11 @@ function criarTabela(a) {
 
 function montarLinha(tabela, lista) {
 
+    let linha;
+
     lista.forEach(function(e) {
 
-        let linha = document.createElement('tr');
+        linha = document.createElement('tr');
         linha.className = 'linhaTabela';
 
         let colunaImagem = document.createElement('img');
@@ -109,7 +111,9 @@ function montarLinha(tabela, lista) {
         linha.appendChild(colunaNome);
 
         tabela.appendChild(linha);
-    })
+    });
+
+    linha.style.border = '1px solid rgb(115, 189, 4)';
 }
 
 function filtrar() {
