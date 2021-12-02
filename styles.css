@@ -28,7 +28,9 @@ header {
 .botoesFiltro {
     margin-left: 10px;
     border-radius: 3px;
-    padding: 4px;
+    padding: 8px;
+    border: 1px solid rgb(211, 62, 62);
+    background-color: rgb(193, 228, 142);
 }
 
 .botoesFiltro:hover {
@@ -43,7 +45,7 @@ table {
 }
 
 .linhaTabela {
-    width: 20vw;
+    width: 30vw;
     display: flex;
     border: 1px rgb(115, 189, 4) solid;
     border-collapse: collapse;
@@ -65,12 +67,52 @@ a:hover {
     margin-left: 10px;
     display: flex;
     justify-content: center;
-    width: 70%;
+    width: 60%;
     align-items: center;
+    text-transform: capitalize;
 }
 
 .colunaImagem {
-    padding: 10px;
+    padding: 15px;
     width: 15%;
     border-right: 1px solid rgb(115, 189, 4);
+    border-left: 1px solid rgb(115, 189, 4);
+}
+
+.colunaId {
+    width: 15%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    font-size: 11px;
+    font-family: Arial, Helvetica, sans-serif;
+    justify-content: center;
+}
+
+.linhaHeader {
+    width: 30vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    border: 1px rgb(115, 189, 4) solid;
+    border-collapse: collapse;
+    border-bottom: 0;
+}
+
+.colunaIdHeader {
+    color: rgb(28, 99, 28);
+    width: 19%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    border-right: 1px solid rgb(115, 189, 4);
+}
+
+.colunaPokemon {
+    color: rgb(28, 99, 28);
+    width: 81%;
+    display: flex;
+    justify-content: center;
 }

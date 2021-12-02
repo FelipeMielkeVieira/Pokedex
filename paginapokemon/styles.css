@@ -33,6 +33,7 @@ main {
     border-radius: 10px;
     margin: 2px;
     width: 90%;
+    text-transform: capitalize;
 }
 
 table {

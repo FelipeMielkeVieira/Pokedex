@@ -9,6 +9,12 @@ let nomePokemon = document.createElement('p');
 
 let inputfiltro;
 let botaoBusca;
+let botaoLimpar;
+
+botaoLimpar = document.createElement('button');
+botaoLimpar.className = 'botoesFiltro';
+botaoLimpar.innerText = 'Limpar';
+botaoLimpar.onclick = limparFiltro;
 
 botaoBusca = document.createElement('button');
 botaoBusca.className = 'botoesFiltro';
@@ -65,6 +71,12 @@ function colocarFiltro(a) {
 
     a.appendChild(inputfiltro);
     a.appendChild(botaoBusca);
+    a.appendChild(botaoLimpar);
+}
+
+function limparFiltro() {
+    inputfiltro.value = '';
+    filtrar();
 }
 
 function criarTabela(a) {
@@ -77,9 +89,30 @@ function criarTabela(a) {
 
     let tabela = document.createElement('table');
 
+    montarHeaderTabela(tabela);
     montarLinha(tabela, a);
 
     tela.appendChild(tabela);
+}
+
+function montarHeaderTabela(tabela) {
+
+    let linha = document.createElement('tr');
+    linha.className = 'linhaHeader';
+
+    let colunaId = document.createElement('th');
+    colunaId.className = 'colunaIdHeader';
+
+    let colunaPokemon = document.createElement('th');
+    colunaPokemon.className = 'colunaPokemon';
+
+    colunaId.innerText = 'Número';
+    colunaPokemon.innerText = 'Pokémon'
+
+    linha.appendChild(colunaId);
+    linha.appendChild(colunaPokemon);
+
+    tabela.appendChild(linha);
 }
 
 function montarLinha(tabela, lista) {
@@ -91,6 +124,9 @@ function montarLinha(tabela, lista) {
         linha = document.createElement('tr');
         linha.className = 'linhaTabela';
 
+        let colunaId = document.createElement('td');
+        colunaId.className = 'colunaId';
+
         let colunaImagem = document.createElement('img');
         colunaImagem.className = 'colunaImagem';
 
@@ -99,14 +135,18 @@ function montarLinha(tabela, lista) {
 
         let idPokemon = e.id;
 
+        colunaId.innerText = 'Nº ' + idPokemon;
+
         colunaNome.innerText = e.name;
         colunaNome.href = './paginapokemon/index.html?' + idPokemon;
         colunaImagem.src = e.url_icon;
 
         colunaImagem.onerror = function() {
             colunaImagem.src = e.url_icon_2;
+            colunaImagem.style.width = '14.3%';
         }
 
+        linha.appendChild(colunaId);
         linha.appendChild(colunaImagem);
         linha.appendChild(colunaNome);
 
