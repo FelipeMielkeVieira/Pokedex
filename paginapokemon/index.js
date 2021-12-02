@@ -2,6 +2,9 @@ let tela = document.querySelector('body');
 let head = document.querySelector('head');
 let divMain = document.createElement('main');
 
+let divNomeImagem;
+let nomePokemon;
+
 let idPokemon = document.location.search;
 idPokemon = idPokemon.replace('?', '');
 
@@ -34,17 +37,17 @@ function criarPagina(a) {
 
     tela.appendChild(divMain);
 
-    divNomeImagem(a)
+    criarDivNomeImagem(a)
     tabelaStatus(a);
     tituloPagina(a);
 }
 
-function divNomeImagem(a) {
+function criarDivNomeImagem(a) {
 
-    let divNomeImagem = document.createElement('div');
+    divNomeImagem = document.createElement('div');
     divNomeImagem.className = 'divNomeImagem';
 
-    nomePokemon(a, divNomeImagem);
+    criarNomePokemon(a, divNomeImagem);
     imagemPokemon(a, divNomeImagem);
 
     divMain.appendChild(divNomeImagem);
@@ -68,9 +71,9 @@ function imagemPokemon(a, b) {
     b.appendChild(divImagem);
 }
 
-function nomePokemon(a, b) {
+function criarNomePokemon(a, b) {
 
-    let nomePokemon = document.createElement('p');
+    nomePokemon = document.createElement('p');
     nomePokemon.innerText = a.name;
 
     nomePokemon.className = 'nomePokemon';
@@ -102,6 +105,20 @@ function linhaatk(a, b) {
 
     let atkvalor = document.createElement('td');
     atkvalor.innerText = a.atk;
+
+    if (a.atk < 15) {
+        divNomeImagem.style.backgroundColor = 'rgb(199, 243, 134)';
+    } else if (a.atk < 30) {
+        divNomeImagem.style.backgroundColor = 'rgb(138, 137, 235)';
+    } else if (a.atk < 45) {
+        divNomeImagem.style.backgroundColor = 'rgb(224, 214, 117)';
+    } else if (a.atk < 60) {
+        divNomeImagem.style.backgroundColor = 'rgb(91, 196, 81)';
+    } else if (a.atk < 75) {
+        divNomeImagem.style.backgroundColor = 'rgb(136, 225, 231)';
+    } else {
+        divNomeImagem.style.backgroundColor = 'rgb(233, 52, 52)';
+    }
 
     linha.appendChild(coluna);
     linha.appendChild(atkvalor);

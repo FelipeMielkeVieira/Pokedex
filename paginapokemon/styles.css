@@ -28,7 +28,7 @@ main {
     font-weight: bold;
     display: flex;
     justify-content: center;
-    background-color: rgb(25, 167, 25);
+    background-color: rgb(70, 172, 70);
     border: 1px transparent solid;
     border-radius: 10px;
     margin: 2px;
@@ -68,9 +68,8 @@ td {
     align-items: center;
     flex-direction: column;
     width: auto;
-    border: 1px red solid;
+    border: 1px black solid;
     border-radius: 8px;
-    background-color: rgb(236, 113, 113);
 }
 
 .divImagem {
