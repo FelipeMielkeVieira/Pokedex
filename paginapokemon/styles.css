@@ -9,33 +9,73 @@ body {
     flex-direction: column;
 }
 
+main {
+    display: flex;
+    width: 40%;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
 .imagemPokemon {
     width: 15vw;
-    border: 2px solid red;
-    border-radius: 10px;
-    padding: 10px;
+    padding: 15px;
+    padding-right: 40px;
 }
 
 .nomePokemon {
     font-size: 26px;
-    margin-top: 10px;
+    padding: 8px;
     font-weight: bold;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(25, 167, 25);
+    border: 1px transparent solid;
+    border-radius: 10px;
+    margin: 2px;
+    width: 90%;
 }
 
 table {
     margin-top: 30px;
+    border: 1px solid black;
+    border-radius: 10px;
 }
 
 .linha {
     width: 10vw;
     display: flex;
     justify-content: space-evenly;
-    border: 1px solid black;
+    border-bottom: 1px solid black;
+    border-radius: 6px;
 }
 
-td {
-    padding: 5px;
+.coluna {
+    padding: 10px;
     height: 100%;
     width: 50%;
     border-right: black 1px solid;
+}
+
+td {
+    padding: 10px;
+    height: 100%;
+    width: 50%;
+}
+
+.divNomeImagem {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: auto;
+    border: 1px red solid;
+    border-radius: 8px;
+    background-color: rgb(236, 113, 113);
+}
+
+.divImagem {
+    width: 90%;
+    background-color: white;
+    border-radius: 15px;
+    margin: 2px;
+    margin-bottom: 6px;
 }

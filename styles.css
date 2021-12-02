@@ -45,7 +45,7 @@ table {
 .linhaTabela {
     width: 20vw;
     display: flex;
-    border: 1px black solid;
+    border: 1px rgb(115, 189, 4) solid;
     border-collapse: collapse;
     border-bottom: 0;
 }
@@ -64,11 +64,13 @@ a:hover {
 .colunaNome {
     margin-left: 10px;
     display: flex;
-    justify-content: right;
+    justify-content: center;
+    width: 70%;
     align-items: center;
 }
 
 .colunaImagem {
-    padding: 5px;
+    padding: 10px;
     width: 15%;
+    border-right: 1px solid rgb(115, 189, 4);
 }

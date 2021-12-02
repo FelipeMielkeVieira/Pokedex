@@ -1,5 +1,6 @@
 let tela = document.querySelector('body');
 let head = document.querySelector('head');
+let divMain = document.createElement('main');
 
 let idPokemon = document.location.search;
 idPokemon = idPokemon.replace('?', '');
@@ -31,13 +32,28 @@ function criarCabecalho() {
 
 function criarPagina(a) {
 
-    imagemPokemon(a);
-    nomePokemon(a);
+    tela.appendChild(divMain);
+
+    divNomeImagem(a)
     tabelaStatus(a);
     tituloPagina(a);
 }
 
-function imagemPokemon(a) {
+function divNomeImagem(a) {
+
+    let divNomeImagem = document.createElement('div');
+    divNomeImagem.className = 'divNomeImagem';
+
+    nomePokemon(a, divNomeImagem);
+    imagemPokemon(a, divNomeImagem);
+
+    divMain.appendChild(divNomeImagem);
+}
+
+function imagemPokemon(a, b) {
+
+    let divImagem = document.createElement('div');
+    divImagem.className = 'divImagem';
 
     let imagemPokemon = document.createElement('img');
     imagemPokemon.src = a.url_icon;
@@ -48,24 +64,25 @@ function imagemPokemon(a) {
         imagemPokemon.src = a.url_icon_2;
     }
 
-    tela.appendChild(imagemPokemon);
+    divImagem.appendChild(imagemPokemon);
+    b.appendChild(divImagem);
 }
 
-function nomePokemon(a) {
+function nomePokemon(a, b) {
 
     let nomePokemon = document.createElement('p');
     nomePokemon.innerText = a.name;
 
     nomePokemon.className = 'nomePokemon';
 
-    tela.appendChild(nomePokemon);
+    b.appendChild(nomePokemon);
 }
 
 function tabelaStatus(a) {
 
     let tabelaStatus = document.createElement('table');
 
-    tela.appendChild(tabelaStatus);
+    divMain.appendChild(tabelaStatus);
 
     linhaatk(a, tabelaStatus);
     linhaatks(a, tabelaStatus);
@@ -77,9 +94,11 @@ function linhaatk(a, b) {
 
     let linha = document.createElement('tr');
     linha.className = 'linha';
+    linha.style.backgroundColor = 'rgb(117, 211, 117)';
 
     let coluna = document.createElement('td');
     coluna.innerText = 'ATK';
+    coluna.className = 'coluna';
 
     let atkvalor = document.createElement('td');
     atkvalor.innerText = a.atk;
@@ -97,6 +116,7 @@ function linhaatks(a, b) {
 
     let coluna = document.createElement('td');
     coluna.innerText = 'ATKS';
+    coluna.className = 'coluna';
 
     let atksvalor = document.createElement('td');
     atksvalor.innerText = a.atks;
@@ -111,9 +131,11 @@ function linhadef(a, b) {
 
     let linha = document.createElement('tr');
     linha.className = 'linha';
+    linha.style.backgroundColor = 'rgb(117, 211, 117)';
 
     let coluna = document.createElement('td');
     coluna.innerText = 'DEF';
+    coluna.className = 'coluna';
 
     let defvalor = document.createElement('td');
     defvalor.innerText = a.def;
@@ -128,9 +150,11 @@ function linhadefs(a, b) {
 
     let linha = document.createElement('tr');
     linha.className = 'linha';
+    linha.style.borderBottom = '0px';
 
     let coluna = document.createElement('td');
     coluna.innerText = 'DEFS';
+    coluna.className = 'coluna';
 
     let defsvalor = document.createElement('td');
     defsvalor.innerText = a.defs;
