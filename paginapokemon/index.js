@@ -3,7 +3,6 @@ let head = document.querySelector('head');
 let divMain = document.createElement('main');
 
 let divNomeImagem;
-let nomePokemon;
 
 let idPokemon = document.location.search;
 idPokemon = idPokemon.replace('?', '');
@@ -73,7 +72,7 @@ function imagemPokemon(a, b) {
 
 function criarNomePokemon(a, b) {
 
-    nomePokemon = document.createElement('p');
+    let nomePokemon = document.createElement('p');
     nomePokemon.innerText = a.name;
 
     nomePokemon.className = 'nomePokemon';

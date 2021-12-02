@@ -143,7 +143,7 @@ function montarLinha(tabela, lista) {
 
         colunaImagem.onerror = function() {
             colunaImagem.src = e.url_icon_2;
-            colunaImagem.style.width = '14.3%';
+            colunaImagem.style.width = '14.5%';
         }
 
         linha.appendChild(colunaId);
@@ -153,7 +153,9 @@ function montarLinha(tabela, lista) {
         tabela.appendChild(linha);
     });
 
+    linha.style.borderRadius = '0px 0px 8px 8px';
     linha.style.border = '1px solid rgb(115, 189, 4)';
+    linha.style.marginBottom = '15px';
 }
 
 function filtrar() {

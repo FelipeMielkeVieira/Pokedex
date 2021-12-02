@@ -10,6 +10,7 @@ body {
 }
 
 main {
+    margin-top: 70px;
     display: flex;
     width: 40%;
     align-items: center;
@@ -20,6 +21,10 @@ main {
     width: 15vw;
     padding: 15px;
     padding-right: 40px;
+}
+
+.imagemPokemon:hover {
+    cursor: pointer;
 }
 
 .nomePokemon {
