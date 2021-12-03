@@ -109,9 +109,10 @@ function montarHeaderTabela(tabela) {
 
 function montarLinha(tabela, lista) {
 
+    let linha;
+
     lista.forEach(function(e) {
 
-        let linha;
         linha = document.createElement('tr');
         linha.className = 'linhaTabela';
 
@@ -142,6 +143,9 @@ function montarLinha(tabela, lista) {
 
         tabela.appendChild(linha);
     });
+
+    linha.style.borderBottom = '1px rgb(115, 189, 4) solid';
+    linha.style.borderRadius = '0px 0px 8px 8px';
 }
 
 function filtrar() {
