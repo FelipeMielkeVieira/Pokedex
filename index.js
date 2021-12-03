@@ -57,13 +57,13 @@ function criarFiltro() {
     colocarFiltro(divFiltro);
 }
 
-function colocarFiltro(a) {
+function colocarFiltro(div) {
 
-    tela.appendChild(a);
+    tela.appendChild(div);
 
-    a.appendChild(inputfiltro);
-    a.appendChild(botaoBusca);
-    a.appendChild(botaoLimpar);
+    div.appendChild(inputfiltro);
+    div.appendChild(botaoBusca);
+    div.appendChild(botaoLimpar);
 }
 
 function limparFiltro() {
