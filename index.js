@@ -3,30 +3,22 @@ let head = document.querySelector('head');
 
 let lista = [];
 
-let idPokemon;
-let imagemPokemon = document.createElement('img');
-let nomePokemon = document.createElement('p');
-
 let inputfiltro;
-let botaoBusca;
-let botaoLimpar;
 
-botaoLimpar = document.createElement('button');
-botaoLimpar.className = 'botoesFiltro';
-botaoLimpar.innerText = 'Limpar';
-botaoLimpar.onclick = limparFiltro;
-
-botaoBusca = document.createElement('button');
+let botaoBusca = document.createElement('button');
 botaoBusca.className = 'botoesFiltro';
 botaoBusca.innerText = 'Buscar';
 botaoBusca.onclick = filtrar;
+
+let botaoLimpar = document.createElement('button');
+botaoLimpar.className = 'botoesFiltro';
+botaoLimpar.innerText = 'Limpar';
+botaoLimpar.onclick = limparFiltro;
 
 function pegarListaPokemon() {
     fetch('https://prof-poke-api.herokuapp.com/api/pokedex/')
         .then(function(resultado) {
             resultado.json().then(function(data) {
-
-                console.log(data);
 
                 data.forEach(a => {
                     lista.push(a);
@@ -117,10 +109,9 @@ function montarHeaderTabela(tabela) {
 
 function montarLinha(tabela, lista) {
 
-    let linha;
-
     lista.forEach(function(e) {
 
+        let linha;
         linha = document.createElement('tr');
         linha.className = 'linhaTabela';
 
@@ -133,14 +124,13 @@ function montarLinha(tabela, lista) {
         let colunaNome = document.createElement('a');
         colunaNome.className = 'colunaNome';
 
-        let idPokemon = e.id;
 
-        colunaId.innerText = 'Nº ' + idPokemon;
+        colunaId.innerText = 'Nº ' + e.id;
 
         colunaNome.innerText = e.name;
-        colunaNome.href = './paginapokemon/index.html?' + idPokemon;
-        colunaImagem.src = e.url_icon;
+        colunaNome.href = './paginapokemon/index.html?' + e.id;
 
+        colunaImagem.src = e.url_icon;
         colunaImagem.onerror = function() {
             colunaImagem.src = e.url_icon_2;
             colunaImagem.style.width = '14.5%';
@@ -152,10 +142,6 @@ function montarLinha(tabela, lista) {
 
         tabela.appendChild(linha);
     });
-
-    linha.style.borderRadius = '0px 0px 8px 8px';
-    linha.style.border = '1px solid rgb(115, 189, 4)';
-    linha.style.marginBottom = '15px';
 }
 
 function filtrar() {

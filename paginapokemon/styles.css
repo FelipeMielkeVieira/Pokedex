@@ -91,14 +91,13 @@ td {
 }
 
 .divBaixo {
-    position: absolute;
-    bottom: 30px;
+    margin-top: 30px;
     width: 25vw;
     display: flex;
     justify-content: space-evenly;
 }
 
-.asFooter {
+.linksFooter {
     padding: 8px;
     border: 1px solid black;
     height: 100%;
@@ -108,7 +107,7 @@ td {
     border-radius: 8px;
 }
 
-.asFooter:hover {
+.linksFooter:hover {
     color: red;
     transition: all 0.5s;
 }

@@ -12,9 +12,8 @@ function pegarDadosPokemon() {
         .then(function(resultado) {
             resultado.json().then(function(data) {
 
-                console.log(data);
-
                 criarPagina(data);
+
             });
         }).catch(function(erro) {
             console.log('erro:', erro);
@@ -32,69 +31,72 @@ function criarCabecalho() {
     tela.appendChild(cabecalho);
 }
 
-function criarPagina(a) {
+function criarPagina(objeto) {
+
+    criarCabecalho();
 
     tela.appendChild(divMain);
 
-    criarDivNomeImagem(a)
-    tabelaStatus(a);
-    tituloPagina(a);
-    criarDivBaixo(a);
+    criarDivNomeImagem(objeto)
+    tabelaStatus(objeto);
+    tituloPagina(objeto);
+    criarDivBaixo(objeto);
     voltarPgInicial();
+
 }
 
-function criarDivNomeImagem(a) {
+function criarDivNomeImagem(objeto) {
 
     divNomeImagem = document.createElement('div');
     divNomeImagem.className = 'divNomeImagem';
 
-    criarNomePokemon(a, divNomeImagem);
-    imagemPokemon(a, divNomeImagem);
+    criarNomePokemon(objeto, divNomeImagem);
+    criarImagemPokemon(objeto, divNomeImagem);
 
     divMain.appendChild(divNomeImagem);
 }
 
-function imagemPokemon(a, b) {
+function criarNomePokemon(objeto, div) {
+
+    let nomePokemon = document.createElement('p');
+    nomePokemon.innerText = objeto.name;
+
+    nomePokemon.className = 'nomePokemon';
+
+    div.appendChild(nomePokemon);
+}
+
+function criarImagemPokemon(objeto, div) {
 
     let divImagem = document.createElement('div');
     divImagem.className = 'divImagem';
 
     let imagemPokemon = document.createElement('img');
-    imagemPokemon.src = a.url_icon;
+    imagemPokemon.src = objeto.url_icon;
 
     imagemPokemon.className = 'imagemPokemon';
 
     imagemPokemon.onerror = function() {
-        imagemPokemon.src = a.url_icon_2;
+        imagemPokemon.src = objeto.url_icon_2;
     }
 
     divImagem.appendChild(imagemPokemon);
-    b.appendChild(divImagem);
+    div.appendChild(divImagem);
 }
 
-function criarNomePokemon(a, b) {
-
-    let nomePokemon = document.createElement('p');
-    nomePokemon.innerText = a.name;
-
-    nomePokemon.className = 'nomePokemon';
-
-    b.appendChild(nomePokemon);
-}
-
-function tabelaStatus(a) {
+function tabelaStatus(objeto) {
 
     let tabelaStatus = document.createElement('table');
 
     divMain.appendChild(tabelaStatus);
 
-    linhaatk(a, tabelaStatus);
-    linhaatks(a, tabelaStatus);
-    linhadef(a, tabelaStatus);
-    linhadefs(a, tabelaStatus);
+    linhaatk(objeto, tabelaStatus);
+    linhaatks(objeto, tabelaStatus);
+    linhadef(objeto, tabelaStatus);
+    linhadefs(objeto, tabelaStatus);
 }
 
-function linhaatk(a, b) {
+function linhaatk(objeto, tabela) {
 
     let linha = document.createElement('tr');
     linha.className = 'linha';
@@ -104,30 +106,30 @@ function linhaatk(a, b) {
     coluna.innerText = 'ATK';
     coluna.className = 'coluna';
 
-    let atkvalor = document.createElement('td');
-    atkvalor.innerText = a.atk;
+    let atkValor = document.createElement('td');
+    atkValor.innerText = objeto.atk;
 
-    if (a.atk < 15) {
+    if (objeto.atk < 15) {
         divNomeImagem.style.backgroundColor = 'rgb(199, 243, 134)';
-    } else if (a.atk < 30) {
+    } else if (objeto.atk < 30) {
         divNomeImagem.style.backgroundColor = 'rgb(138, 137, 235)';
-    } else if (a.atk < 45) {
+    } else if (objeto.atk < 45) {
         divNomeImagem.style.backgroundColor = 'rgb(224, 214, 117)';
-    } else if (a.atk < 60) {
+    } else if (objeto.atk < 60) {
         divNomeImagem.style.backgroundColor = 'rgb(91, 196, 81)';
-    } else if (a.atk < 75) {
+    } else if (objeto.atk < 75) {
         divNomeImagem.style.backgroundColor = 'rgb(136, 225, 231)';
     } else {
         divNomeImagem.style.backgroundColor = 'rgb(233, 52, 52)';
     }
 
     linha.appendChild(coluna);
-    linha.appendChild(atkvalor);
+    linha.appendChild(atkValor);
 
-    b.appendChild(linha);
+    tabela.appendChild(linha);
 }
 
-function linhaatks(a, b) {
+function linhaatks(objeto, tabela) {
 
     let linha = document.createElement('tr');
     linha.className = 'linha';
@@ -136,16 +138,16 @@ function linhaatks(a, b) {
     coluna.innerText = 'ATKS';
     coluna.className = 'coluna';
 
-    let atksvalor = document.createElement('td');
-    atksvalor.innerText = a.atks;
+    let atksValor = document.createElement('td');
+    atksValor.innerText = objeto.atks;
 
     linha.appendChild(coluna);
-    linha.appendChild(atksvalor);
+    linha.appendChild(atksValor);
 
-    b.appendChild(linha);
+    tabela.appendChild(linha);
 }
 
-function linhadef(a, b) {
+function linhadef(objeto, tabela) {
 
     let linha = document.createElement('tr');
     linha.className = 'linha';
@@ -155,16 +157,16 @@ function linhadef(a, b) {
     coluna.innerText = 'DEF';
     coluna.className = 'coluna';
 
-    let defvalor = document.createElement('td');
-    defvalor.innerText = a.def;
+    let defValor = document.createElement('td');
+    defValor.innerText = objeto.def;
 
     linha.appendChild(coluna);
-    linha.appendChild(defvalor);
+    linha.appendChild(defValor);
 
-    b.appendChild(linha);
+    tabela.appendChild(linha);
 }
 
-function linhadefs(a, b) {
+function linhadefs(objeto, tabela) {
 
     let linha = document.createElement('tr');
     linha.className = 'linha';
@@ -174,67 +176,67 @@ function linhadefs(a, b) {
     coluna.innerText = 'DEFS';
     coluna.className = 'coluna';
 
-    let defsvalor = document.createElement('td');
-    defsvalor.innerText = a.defs;
+    let defsValor = document.createElement('td');
+    defsValor.innerText = objeto.defs;
 
     linha.appendChild(coluna);
-    linha.appendChild(defsvalor);
+    linha.appendChild(defsValor);
 
-    b.appendChild(linha);
+    tabela.appendChild(linha);
 }
 
-function tituloPagina(a) {
+function tituloPagina(objeto) {
 
     let titulo = document.createElement('title');
 
-    titulo.innerText = a.name;
+    titulo.innerText = objeto.name;
 
     head.appendChild(titulo);
 }
 
-function criarDivBaixo(a) {
+function criarDivBaixo(objeto) {
 
     let divBaixo = document.createElement('div');
     divBaixo.className = 'divBaixo';
 
-    if (a.id != '001') {
+    if (objeto.id != '001') {
 
-        let voltar = document.createElement('a');
-        voltar.innerText = 'Pokémon Anterior';
-        voltar.className = 'asFooter';
+        let voltarLink = document.createElement('a');
+        voltarLink.innerText = 'Pokémon Anterior';
+        voltarLink.className = 'linksFooter';
 
-        let idVoltar = parseInt(a.id) - 1;
-        let idVoltar2 = idVoltar + '';
+        let idVoltar = parseInt(objeto.id) - 1;
+        let idVoltarString = idVoltar + '';
 
-        if (idVoltar2.length == 1) {
-            idVoltar2 = '00' + idVoltar2;
-        } else if (idVoltar2.length == 2) {
-            idVoltar2 = '0' + idVoltar2;
+        if (idVoltarString.length == 1) {
+            idVoltarString = '00' + idVoltarString;
+        } else if (idVoltarString.length == 2) {
+            idVoltarString = '0' + idVoltarString;
         }
 
-        voltar.href = './index.html?' + idVoltar2;
+        voltarLink.href = './index.html?' + idVoltarString;
 
-        divBaixo.appendChild(voltar);
+        divBaixo.appendChild(voltarLink);
     }
 
-    if (a.id != '10060') {
+    if (objeto.id != '10060') {
 
-        let proximo = document.createElement('a');
-        proximo.innerText = 'Próximo Pokémon';
-        proximo.className = 'asFooter';
+        let proximoLink = document.createElement('a');
+        proximoLink.innerText = 'Próximo Pokémon';
+        proximoLink.className = 'linksFooter';
 
-        let idProximo = parseInt(a.id) + 1;
-        let idProximo2 = idProximo + '';
+        let idProximo = parseInt(objeto.id) + 1;
+        let idProximoString = idProximo + '';
 
-        if (idProximo2.length == 1) {
-            idProximo2 = '00' + idProximo2;
-        } else if (idProximo2.length == 2) {
-            idProximo2 = '0' + idProximo2;
+        if (idProximoString.length == 1) {
+            idProximoString = '00' + idProximoString;
+        } else if (idProximoString.length == 2) {
+            idProximoString = '0' + idProximoString;
         }
 
-        proximo.href = './index.html?' + idProximo2;
+        proximoLink.href = './index.html?' + idProximoString;
 
-        divBaixo.appendChild(proximo);
+        divBaixo.appendChild(proximoLink);
     }
 
     tela.appendChild(divBaixo);
@@ -251,5 +253,4 @@ function voltarPgInicial() {
     tela.appendChild(botaoPgInicial);
 }
 
-criarCabecalho();
 pegarDadosPokemon();
