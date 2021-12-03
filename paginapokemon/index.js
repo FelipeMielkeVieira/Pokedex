@@ -199,9 +199,6 @@ function criarDivBaixo(a) {
 
     if (a.id != '001') {
 
-        let botaoVoltar = document.createElement('button');
-        botaoVoltar.className = 'botoesFooter';
-
         let voltar = document.createElement('a');
         voltar.innerText = 'Pokémon Anterior';
         voltar.className = 'asFooter';
@@ -217,14 +214,10 @@ function criarDivBaixo(a) {
 
         voltar.href = './index.html?' + idVoltar2;
 
-        divBaixo.appendChild(botaoVoltar);
-        botaoVoltar.appendChild(voltar);
+        divBaixo.appendChild(voltar);
     }
 
     if (a.id != '10060') {
-
-        let botaoProximo = document.createElement('button');
-        botaoProximo.className = 'botoesFooter';
 
         let proximo = document.createElement('a');
         proximo.innerText = 'Próximo Pokémon';
@@ -241,8 +234,7 @@ function criarDivBaixo(a) {
 
         proximo.href = './index.html?' + idProximo2;
 
-        botaoProximo.appendChild(proximo);
-        divBaixo.appendChild(botaoProximo);
+        divBaixo.appendChild(proximo);
     }
 
     tela.appendChild(divBaixo);
