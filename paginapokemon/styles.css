@@ -115,6 +115,11 @@ td {
     align-items: center;
 }
 
+.asFooter:hover {
+    color: red;
+    transition: all 0.5s;
+}
+
 .pgInicial {
     padding: 10px;
     border: 1px solid black;
