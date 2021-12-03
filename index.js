@@ -1,8 +1,6 @@
 let tela = document.querySelector('body');
 let head = document.querySelector('head');
 
-let lista = [];
-
 let inputfiltro;
 
 let botaoBusca = document.createElement('button');
@@ -14,6 +12,9 @@ let botaoLimpar = document.createElement('button');
 botaoLimpar.className = 'botoesFiltro';
 botaoLimpar.innerText = 'Limpar';
 botaoLimpar.onclick = limparFiltro;
+
+
+let lista = [];
 
 function pegarListaPokemon() {
     fetch('https://prof-poke-api.herokuapp.com/api/pokedex/')
